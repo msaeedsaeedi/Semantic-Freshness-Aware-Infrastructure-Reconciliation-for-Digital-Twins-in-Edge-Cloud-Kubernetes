@@ -1,0 +1,4 @@
+Policy,Reconciliations,Avg AoI (ticks),Total Overhead,IoT Energy (arb. units)
+Periodic,20,2.0,200,6000
+EventDriven,61,2.0,610,6000
+Semantic,35,2.0,550,6000
