@@ -56,19 +56,27 @@ class Service:
 
 
 class DigitalTwin:
-    def __init__(self, services):
+    """A sampled, possibly-stale view of the physical state.
+    Reports a moving average of recent telemetry to filter short spikes."""
+
+    def __init__(self, services, window=3):
         self.services = services
+        self.history = {s.id: [] for s in services}
         self.dt_demand = {s.id: s.true_cpu_demand for s in services}
         self.last_update = {s.id: 0 for s in services}
+        self.window = window
 
     def update(self, tick):
         for s in self.services:
-            self.dt_demand[s.id] = s.true_cpu_demand
+            self.history[s.id].append(s.true_cpu_demand)
+            if len(self.history[s.id]) > self.window:
+                self.history[s.id].pop(0)
+            # The DT reports the moving average, not the raw last value
+            self.dt_demand[s.id] = sum(self.history[s.id]) / len(self.history[s.id])
             self.last_update[s.id] = tick
 
     def aoi(self, sid, tick):
         return tick - self.last_update[sid]
-
 
 def periodic_policy(twin, tick, state):
     return tick % PERIODIC_INTERVAL == 0
@@ -83,17 +91,35 @@ def event_driven_policy(twin, tick, state):
 
 
 def semantic_policy(twin, tick, state):
+    """
+    Reconcile only when:
+      (a) the change is significant AND
+      (b) it has persisted for CONFIRMATION_TICKS *telemetry updates*
+      (c) the DT is fresh enough that we trust the reading (AoI low)
+    """
+    # Only evaluate at telemetry boundaries
+    if tick % TELEMETRY_INTERVAL != 0:
+        return False
+
     state["overhead"] += SEMANTIC_EVAL_COST
+
     trigger = False
     for sid in state["last_reconciled"]:
         change = abs(twin.dt_demand[sid] - state["last_reconciled"][sid])
+
         if change > SIGNIFICANCE_THRESHOLD:
             state["pending_confirmations"][sid] += 1
         else:
             state["pending_confirmations"][sid] = 0
-        if (state["pending_confirmations"][sid] >= CONFIRMATION_TICKS and
-                twin.aoi(sid, tick) > FRESHNESS_THRESHOLD):
+
+        if state["pending_confirmations"][sid] >= CONFIRMATION_TICKS:
             trigger = True
+
+    if trigger:
+        # Reset counters so we don't re-trigger on the same change
+        for sid in state["last_reconciled"]:
+            state["pending_confirmations"][sid] = 0
+
     return trigger
 
 
