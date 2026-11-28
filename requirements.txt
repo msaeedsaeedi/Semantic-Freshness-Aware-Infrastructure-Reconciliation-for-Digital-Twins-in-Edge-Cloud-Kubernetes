@@ -1,4 +1,5 @@
 numpy>=1.26
 pandas>=2.1
 matplotlib>=3.8
-edge-sim-py==1.1.0
+# EdgeSimPy 1.1.0 is not published on PyPI; install the exact commit used for the paper's results.
+edge-sim-py @ git+https://github.com/EdgeSimPy/EdgeSimPy.git@d4611f433d4402e8023afc962c079ea670d29529

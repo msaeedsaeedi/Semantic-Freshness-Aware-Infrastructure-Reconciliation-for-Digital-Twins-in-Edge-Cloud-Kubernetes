@@ -29,6 +29,8 @@ src/sensitivity.py       sensitivity to theta and c
 src/edgesimpy_experiment.py   Phase 2 inside EdgeSimPy (slowest)
 src/make_figures.py      Figures 2 and 3 and Phase 2 statistics
 results/                 all CSV files and figures used in the paper
+poster/build_poster.py   builds Final_Poster.pdf (A0) from results/*.csv
+Final_Poster.pdf         conference poster, generated from the results
 run_all.ps1 / run_all.sh run everything in order
 ```
 
@@ -40,8 +42,7 @@ venv\Scripts\activate          # Windows;  source venv/bin/activate on Linux/mac
 pip install -r requirements.txt
 ```
 
-If `edge-sim-py` cannot be installed from PyPI, install it from the EdgeSimPy repository
-(`pip install git+https://github.com/EdgeSimPy/EdgeSimPy.git`) and note the version it reports. The results here were produced with v1.1.0.
+`requirements.txt` installs EdgeSimPy v1.1.0 directly from GitHub at the exact commit used for the results (the package is not published on PyPI), so `git` must be available.
 
 ## Reproduce
 
@@ -57,12 +58,19 @@ python src/make_figures.py
 
 All randomness is seeded (traces are generated from the seed, and every policy replays the same trace), so the CSV files are reproducible.
 
+Optional: rebuild the poster from the result files (needs `pip install segno` and Google Chrome or Chromium):
+
+```
+python poster/build_poster.py
+```
+
 ## Modeling notes and limitations
 
 - Phase 1 counts reconciliations **per service**; one reconciliation is one possible migration.
 - Sustained gap is measured against the demand **without** transient spikes, because the policy is meant to ignore them. Delay and false-reconciliation definitions are in the paper (Section IV).
 - Phase 2 confines placement to 3 of the 6 servers, because the dataset has one service per server and no migration could then improve balance.
 - Workloads are synthetic, and the periodic baseline is matched to the same reconciliation count.
+- In Phase 2, tick 0 is used for the initial placement, so the periodic baseline performs one round fewer (6 reconciliations) than the count it was matched to. Persistence therefore uses about 4-7 more reconciliations than matched periodic (see the paper, Section V-D). Phase 2 metrics average over the ticks after all services are placed (988 of 1000).
 
 ## Citation and license
 
