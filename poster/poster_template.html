@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Persistence-Based Reconciliation for Digital Twins in Edge-Cloud Kubernetes</title>
+<style>
+@page { size: 841mm 1189mm; margin: 0 }
+* { box-sizing: border-box; margin: 0; padding: 0 }
+html, body { width: 3178px; height: 4494px; background: #E9EEF4; font-family: 'Inter', 'DejaVu Sans', sans-serif; color: #14202E;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact }
+.page { width: 3178px; height: 4494px; overflow: hidden; display: flex; flex-direction: column }
+header { height: 450px; background: linear-gradient(115deg, #0B2A4A 0%, #14487C 100%); color: #fff; padding: 34px 80px 30px;
+  display: flex; justify-content: space-between; align-items: center; gap: 60px }
+h1 { font-size: 98px; line-height: 1.04; font-weight: 800; letter-spacing: -2px }
+.authors { font-size: 48px; font-weight: 650; margin-top: 20px }
+.authors span { font-weight: 450; opacity: .8; font-size: 40px }
+.affil { font-size: 34px; opacity: .85; margin-top: 4px }
+.chips { margin-top: 14px; display: flex; gap: 18px }
+.chips span { background: rgba(255,255,255,.14); border: 2px solid rgba(255,255,255,.35); border-radius: 40px; padding: 4px 24px; font-size: 30px; font-weight: 600 }
+.qr { background: #fff; border-radius: 24px; padding: 20px 20px 14px; text-align: center; color: #0B2A4A; font-size: 26px; font-weight: 700; flex: none }
+.qr svg { width: 250px; height: 250px; display: block; margin: 0 auto 6px }
+main { flex: 1; padding: 34px 70px 0; display: flex; flex-direction: column; gap: 30px; min-height: 0 }
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; height: 200px }
+.tile { background: #fff; border-radius: 26px; padding: 14px 30px; border-left: 20px solid var(--c); box-shadow: 0 4px 18px rgba(11,42,74,.10) }
+.tile .big { font-size: 92px; font-weight: 800; color: var(--c); line-height: 1.05; letter-spacing: -2px }
+.tile .big small { font-size: 44px; font-weight: 700; letter-spacing: 0 }
+.tile .lab { font-size: 29px; line-height: 1.2; color: #2B3A4B; margin-top: 4px }
+.row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; min-height: 0 }
+.rA { flex: 825 } .rB { flex: 410 } .rC { flex: 1010 } .rD { flex: 765 } .rE { flex: 530 }
+.col { display: flex; flex-direction: column; gap: 30px; min-height: 0 }
+.card { background: #fff; border-radius: 26px; padding: 24px 36px 22px; box-shadow: 0 4px 18px rgba(11,42,74,.10); display: flex; flex-direction: column; min-height: 0; flex: 1 }
+.span2 { grid-column: span 2 } .span3 { grid-column: span 3 }
+h2 { font-size: 44px; font-weight: 800; color: #0B2A4A; display: flex; align-items: center; gap: 18px; margin-bottom: 14px; flex: none }
+h2 .n { background: #0E9F8E; color: #fff; border-radius: 50%; width: 56px; height: 56px; font-size: 32px; display: grid; place-items: center; flex: none }
+p, li { font-size: 31px; line-height: 1.32 }
+ul { list-style: none }
+li { position: relative; padding-left: 36px; margin-bottom: 9px }
+li:before { content: ""; position: absolute; left: 2px; top: .52em; width: 15px; height: 15px; border-radius: 50%; background: #0E9F8E }
+li.warn:before { background: #E8743B }
+b { font-weight: 700 }
+.q { background: #FFF4EC; border-left: 10px solid #E8743B; border-radius: 14px; padding: 12px 22px; font-size: 33px; font-weight: 650; margin-top: auto; line-height: 1.28 }
+.rq { font-size: 32px; line-height: 1.32; font-weight: 500 }
+.eq { background: #EEF4FA; border-left: 10px solid #0B2A4A; border-radius: 14px; padding: 12px 24px; font-size: 34px; line-height: 1.45; margin: 4px 0 12px; font-family: 'Inter', sans-serif }
+.eq i { font-family: 'DejaVu Serif', 'Georgia', serif }
+.note { background: #E8F6F4; border-left: 10px solid #0E9F8E; border-radius: 14px; padding: 10px 22px; font-size: 28px; line-height: 1.28; margin-top: auto }
+table.t { border-collapse: collapse; width: 100%; font-size: 27px }
+.t th { font-weight: 700; color: #0B2A4A; padding: 4px 8px; text-align: right }
+.t th:first-child, .t td:first-child { text-align: left }
+.t td { padding: 4px 8px; text-align: right; border-top: 2px solid #E1E8EF }
+.t tr.hl td { background: #DDF3F0; font-weight: 700; color: #07685D }
+.minis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 12px }
+.mh { font-size: 30px; font-weight: 800; border-bottom: 6px solid; margin-bottom: 4px; padding-bottom: 0 }
+.sens td, .sens th { text-align: center; padding: 6px 3px; font-size: 28px } .sens td { border: 3px solid #fff; font-weight: 650 }
+.sens th:first-child { text-align: left }
+.cap { font-size: 24px; color: #51606F; line-height: 1.25; margin-top: 6px }
+.setup { display: grid; grid-template-columns: 1.3fr 1.1fr 1fr; gap: 50px; flex: 1; min-height: 0 }
+.setup h3 { font-size: 30px; font-weight: 800; color: #0E9F8E; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px }
+.setup li, .setup p { font-size: 28px; line-height: 1.28; margin-bottom: 6px }
+.chip { display: inline-block; border-radius: 10px; padding: 0 12px; color: #fff; font-weight: 700; font-size: 26px }
+.url { font-family: 'DejaVu Sans Mono', monospace; font-size: 23px; word-break: break-all; color: #0B2A4A; background: #EEF4FA; border-radius: 12px; padding: 12px 16px; line-height: 1.3 }
+.code { font-family: 'DejaVu Sans Mono', monospace; font-size: 26px; background: #0B2A4A; color: #E8F6F4; border-radius: 12px; padding: 10px 16px; margin: 4px 0 10px; line-height: 1.35 }
+footer { height: 56px; padding: 0 80px; display: flex; align-items: center; justify-content: space-between; font-size: 26px; color: #51606F }
+.two { columns: 2; column-gap: 40px } .two li { break-inside: avoid }
+</style></head>
+<body><div class="page">
+
+<header>
+  <div>
+    <h1>Persistence-Based Reconciliation for Digital Twins<br>in Edge-Cloud Kubernetes</h1>
+    <div class="authors">Muhammad Kaleem Akhtar <span>(23I-0524)</span> · Mohammed Saeed <span>(23I-0777)</span> · Dr. Basharat Hussain</div>
+    <div class="affil">Department of Computer Science, FAST National University of Computer and Emerging Sciences (FAST-NUCES), Islamabad</div>
+    <div class="chips"><span>Simulation study</span><span>3 synthetic workloads</span><span>%%SEEDS%% paired seeds</span><span>EdgeSimPy v1.1.0</span></div>
+  </div>
+  <div class="qr">%%QR%%Code · data · results</div>
+</header>
+
+<main>
+  <section class="tiles">
+    <div class="tile" style="--c:#0E9F8E"><div class="big">%%GAP%%<small>%</small></div><div class="lab">lower sustained gap than periodic at equal reconciliation count</div></div>
+    <div class="tile" style="--c:#0E9F8E"><div class="big">%%DLY%%<small>%</small></div><div class="lab">faster reaction to real jumps than periodic at equal cost</div></div>
+    <div class="tile" style="--c:#14487C"><div class="big">%%REC%%<small>%</small></div><div class="lab">fewer reconciliations than event-driven (%%MIG%%% fewer migrations in EdgeSimPy)</div></div>
+    <div class="tile" style="--c:#E8743B"><div class="big">%%SLOW%%<small> ticks</small></div><div class="lab">slower reaction than event-driven: the price of persistence</div></div>
+  </section>
+
+  <section class="row rA">
+    <div class="col">
+      <div class="card" style="flex:1.32"><h2><span class="n">1</span>Problem</h2>
+        <ul>
+          <li>A Digital Twin that drives orchestration can turn <b>every telemetry change</b> into an action such as a pod migration, which costs bandwidth, energy and compute.</li>
+          <li><b>Event-driven</b> designs churn on noise bursts; <b>periodic</b> designs are cheap but slow to follow real changes.</li>
+        </ul>
+        <div class="q">When is a deviation large <i>and lasting</i> enough to act on?</div></div>
+      <div class="card"><h2><span class="n">2</span>Research question</h2>
+        <p class="rq">Under dynamic edge-cloud workloads, can a persistence-based reconciliation policy reduce unnecessary infrastructure updates while following the sustained demand at least as well as a periodic policy of equal cost?</p></div>
+    </div>
+    <div class="card"><h2><span class="n">3</span>The persistence rule</h2>
+      <p>Sample <i>x<sub>s</sub></i>(<i>k</i>) every Δ = %%DELTA%% ticks; <i>r<sub>s</sub></i> = state at the last reconciliation.</p>
+      <div class="eq"><i>n<sub>s</sub></i>(<i>k</i>) = ( <i>n<sub>s</sub></i>(<i>k</i>−1) + 1 ) · <b>1</b>[ |<i>x<sub>s</sub></i>(<i>k</i>) − <i>r<sub>s</sub></i>| &gt; θ ]<br>
+        reconcile when <i>n<sub>s</sub></i>(<i>k</i>) ≥ <i>c</i>; then <i>r<sub>s</sub></i> ← <i>x<sub>s</sub></i>(<i>k</i>), <i>n<sub>s</sub></i> ← 0</div>
+      <ul>
+        <li>Proposed: <b>θ = %%THETA%%, c = %%C%%</b> on raw telemetry.</li>
+        <li>Deviations shorter than <b>%%CMIN%% ticks</b> cannot trigger an update.</li>
+        <li>A persistent shift is acted on after <b>%%DLO%%–%%DHI%% ticks</b> (ideal bound).</li>
+      </ul>
+      <div class="note"><b>Not a new algorithm:</b> a debounce / hysteresis rule (cf. the Kubernetes HPA stabilization window). Our contribution is a controlled evaluation with injected ground truth.</div></div>
+    <div class="card"><h2><span class="n">4</span>What it does on a real trace</h2>
+      %%FIG4%%
+      <p class="cap">One service, %%TWL%% workload, seed %%TSEED%%, ticks 0–%%TEND%% (Phase 1 simulator). Event-driven reacts to spikes and noise; persistence waits for %%C%% consecutive deviating samples.</p></div>
+  </section>
+
+  <section class="row rB"><div class="card span3"><h2><span class="n">5</span>Experimental setup</h2>
+    <div class="setup">
+      <div><h3>Phase 1: standalone simulation</h3>
+        <p>%%TICKS%% ticks, %%SERV%% services, telemetry every %%DELTA%% ticks, %%SEEDS%% seeds; jumps ±8, spikes +10; one trace per seed for every policy.</p>
+        <table class="t"><tr><th>Workload</th><th>σ drift</th><th>p jump</th><th>p spike</th><th>Spike ticks</th><th>Matched T</th></tr>%%WLROWS%%</table></div>
+      <div><h3>Policies</h3>
+        <ul><li><span class="chip" style="background:#0E9F8E">Persistence</span> θ = %%THETA%%, c = %%C%%, raw telemetry</li>
+        <li><span class="chip" style="background:#E8743B">Event-driven</span> acts when a sample deviates by &gt; θ = %%THETA%%</li>
+        <li><span class="chip" style="background:#6B7A90">Periodic</span> every T ticks, <b>matched</b> to persistence's count</li>
+        <li><span class="chip" style="background:#51606F">MA ablation</span> 3-sample moving average</li></ul></div>
+      <div><h3>Metrics · Phase 2</h3>
+        <ul><li><b>Reconciliations</b> (one = one possible migration)</li><li><b>Sustained gap</b> to demand without spikes</li><li><b>Delay</b> after an injected jump</li><li><b>False reconciliations</b> (sustained demand moved ≤ %%NEED%%)</li></ul>
+        <p style="margin-top:4px"><b>Phase 2:</b> EdgeSimPy sample topology (6 edge servers, 6 services), %%P2SEEDS%% seeds; adds migrations and load imbalance.</p></div>
+    </div></div></section>
+
+  <section class="row rC">
+    <div class="card span2"><h2><span class="n">6</span>Phase 1: cost versus tracking</h2>
+      %%FIG1%%
+      <div class="minis">%%MINIS%%</div>
+      <p class="cap">Means over %%SEEDS%% paired seeds. Recs = reconciliations, False = false reconciliations, Gap = sustained gap, Delay in ticks; lower is better.</p>
+      <ul class="two" style="margin-top:10px">
+        <li>At equal cost, persistence beats periodic on gap and delay in every workload (paired 95% intervals exclude zero).</li>
+        <li>Against event-driven it needs far fewer reconciliations and false updates, but reacts slower and, on two workloads, tracks less closely.</li>
+      </ul></div>
+    <div class="card"><h2><span class="n">7</span>Smoothing does not help</h2>
+      %%FIG2%%
+      <ul style="margin-top:10px"><li>No smoothing (w = 1) gives the lowest gap and delay on every workload.</li>
+      <li>A moving average only adds lag: <b>persistence is the effective component</b>.</li></ul></div>
+  </section>
+
+  <section class="row rD">
+    <div class="card"><h2><span class="n">8</span>Sensitivity</h2>
+      <p style="margin-bottom:8px"><b>Sustained-gap reduction (%)</b> vs matched periodic, by θ and c</p>
+      %%SENS%%
+      <ul style="margin-top:12px"><li>Persistence wins in all %%NSET%% settings (%%SGLO%%–%%SGHI%%%).</li>
+      <li>Weak case: spiky with c = 2 (%%C2LO%%–%%C2HI%%%): episodes of 6 ticks pass the rule and spikes last %%SPLEN%%.</li></ul></div>
+    <div class="card span2"><h2><span class="n">9</span>Phase 2: inside EdgeSimPy</h2>
+      %%FIG3%%
+      <ul class="two" style="margin-top:10px">
+        <li>%%MIG%%% fewer migrations than event-driven; sustained gap %%GAP2%% lower than matched periodic.</li>
+        <li>Migrations versus matched periodic: no significant difference.</li>
+        <li>Load imbalance: %%IMB%% better than matched periodic (significant on %%IMBSIG%% of 3); event-driven balances best on spiky (%%IMBEVT%% lower).</li>
+        <li class="warn">Matched periodic ran 6 reconciliations short of target (tick 0 is used for placement); persistence used %%RECS2%% more.</li>
+      </ul></div>
+  </section>
+
+  <section class="row rE">
+    <div class="card"><h2><span class="n">10</span>Takeaways</h2>
+      <ul><li>Persistence filters short spikes without a timer: <b>better tracking and faster reaction than periodic at equal cost</b>.</li>
+      <li>A trade-off, not a free win: event-driven reacts fastest but needs %%REC%%% more reconciliations.</li>
+      <li>Age of Information is fixed by sampling (%%AOI%% ticks for every policy), so it cannot rank these policies.</li></ul></div>
+    <div class="card"><h2><span class="n">11</span>Limitations</h2>
+      <ul>
+        <li class="warn">Synthetic workloads only; no real Kubernetes cluster (cost = reconciliations).</li>
+        <li class="warn">Spikes (+10) exceed real jumps (±8), so amplitude alone cannot separate them; the advantage may shrink when spikes are smaller than real shifts.</li>
+        <li class="warn">Phase 2: 3 of 6 servers, greedy migration, %%P2SEEDS%% seeds.</li>
+        <li class="warn">No comparison with tuned HPA or CUSUM/EWMA detectors.</li>
+      </ul></div>
+    <div class="card"><h2><span class="n">12</span>Reproducibility</h2>
+      <p>Seeded traces, same trace for every policy. Every number and figure here is generated from <b>results/*.csv</b>.</p>
+      <div class="code">bash run_all.sh<br>python poster/build_poster.py</div>
+      <p style="margin-bottom:8px">EdgeSimPy pinned in <b>requirements.txt</b>. MIT license.</p>
+      <div class="url">%%URL%%</div></div>
+  </section>
+</main>
+
+<footer><span>Cloud Computing Research Assignment · FAST-NUCES Islamabad</span><span>All evidence is from simulation with synthetic workloads; tests on real clusters remain future work.</span></footer>
+</div></body></html>
