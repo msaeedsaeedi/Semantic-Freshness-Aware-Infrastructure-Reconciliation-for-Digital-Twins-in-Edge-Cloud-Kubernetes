@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper."
+title: "Persistence-Based Reconciliation for Digital Twins in Edge-Cloud Kubernetes"
+authors:
+  - family-names: "Akhtar"
+    given-names: "Muhammad Kaleem"
+  - family-names: "Saeed"
+    given-names: "Mohammed"
+  - family-names: "Hussain"
+    given-names: "Basharat"
+license: MIT
+repository-code: "https://github.com/AKA-5/Semantic-Freshness-Aware-Infrastructure-Reconciliation-for-Digital-Twins-in-Edge-Cloud-Kubernetes"

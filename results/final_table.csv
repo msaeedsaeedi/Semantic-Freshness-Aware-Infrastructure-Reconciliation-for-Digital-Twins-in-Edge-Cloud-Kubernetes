@@ -1,0 +1,21 @@
+,,recs,recs,false_recs,false_recs,sustained_gap,sustained_gap,raw_gap,raw_gap,delay,delay
+,,mean,std,mean,std,mean,std,mean,std,mean,std
+workload,policy,,,,,,,,,,
+default,Event MA,129.82,10.58,30.26,5.09,2.36,0.08,2.73,0.08,27.11,5.18
+default,Event raw,215.66,11.79,60.66,5.91,1.98,0.06,2.12,0.05,12.03,4.86
+default,Periodic T=50,120.0,0.0,66.66,6.65,3.4,0.23,3.76,0.22,46.72,4.19
+default,Periodic matched,72.0,0.0,34.16,4.25,4.38,0.31,4.71,0.29,63.86,4.08
+default,Persistence (proposed),72.1,6.36,0.56,0.73,2.51,0.1,2.92,0.09,31.92,5.52
+default,Persistence + MA (w=3),79.32,6.88,14.86,3.99,2.88,0.12,3.26,0.11,36.71,5.21
+drift-heavy,Event MA,167.2,13.34,23.06,5.07,2.7,0.09,2.88,0.09,34.32,7.07
+drift-heavy,Event raw,263.0,15.27,29.22,4.88,2.06,0.06,2.09,0.05,15.43,6.82
+drift-heavy,Periodic T=50,120.0,0.0,54.16,4.4,4.23,0.23,4.41,0.22,51.79,5.94
+drift-heavy,Periodic matched,102.0,0.0,43.38,5.29,4.72,0.31,4.89,0.3,57.64,5.8
+drift-heavy,Persistence (proposed),101.0,8.16,0.68,0.77,3.06,0.12,3.25,0.12,38.46,7.74
+drift-heavy,Persistence + MA (w=3),101.9,6.79,16.08,3.9,3.45,0.14,3.64,0.14,43.29,7.11
+spiky,Event MA,256.2,14.89,104.08,8.99,4.28,0.13,4.64,0.1,29.39,5.14
+spiky,Event raw,537.5,15.13,243.5,8.5,4.46,0.12,2.64,0.07,12.11,4.92
+spiky,Periodic T=50,120.0,0.0,51.58,5.14,5.14,0.26,5.84,0.18,51.43,5.61
+spiky,Periodic matched,126.0,0.0,54.8,4.94,5.16,0.29,5.9,0.19,50.42,5.1
+spiky,Persistence (proposed),124.56,8.3,30.96,4.86,4.43,0.25,5.26,0.17,34.57,6.33
+spiky,Persistence + MA (w=3),116.78,6.87,42.58,5.7,4.66,0.18,5.33,0.11,40.61,5.19

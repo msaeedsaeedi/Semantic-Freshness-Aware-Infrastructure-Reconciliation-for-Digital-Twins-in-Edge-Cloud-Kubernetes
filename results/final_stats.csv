@@ -1,0 +1,61 @@
+workload,vs,metric,mean_diff,ci_lo,ci_hi,significant
+drift-heavy,Periodic matched,recs,-1.0,-3.18,1.22,False
+drift-heavy,Periodic matched,false_recs,-42.7,-44.14,-41.2,True
+drift-heavy,Periodic matched,sustained_gap,-1.66,-1.73,-1.59,True
+drift-heavy,Periodic matched,raw_gap,-1.64,-1.71,-1.56,True
+drift-heavy,Periodic matched,delay,-19.18,-21.23,-17.14,True
+drift-heavy,Event raw,recs,-162.0,-166.22,-158.2,True
+drift-heavy,Event raw,false_recs,-28.54,-29.86,-27.24,True
+drift-heavy,Event raw,sustained_gap,1.0,0.97,1.03,True
+drift-heavy,Event raw,raw_gap,1.16,1.13,1.19,True
+drift-heavy,Event raw,delay,23.02,21.47,24.64,True
+drift-heavy,Event MA,recs,-66.2,-69.06,-63.32,True
+drift-heavy,Event MA,false_recs,-22.38,-23.82,-21.0,True
+drift-heavy,Event MA,sustained_gap,0.36,0.34,0.39,True
+drift-heavy,Event MA,raw_gap,0.37,0.35,0.39,True
+drift-heavy,Event MA,delay,4.13,2.86,5.38,True
+drift-heavy,Persistence + MA (w=3),recs,-0.9,-2.52,0.8,False
+drift-heavy,Persistence + MA (w=3),false_recs,-15.4,-16.4,-14.42,True
+drift-heavy,Persistence + MA (w=3),sustained_gap,-0.38,-0.41,-0.36,True
+drift-heavy,Persistence + MA (w=3),raw_gap,-0.39,-0.41,-0.36,True
+drift-heavy,Persistence + MA (w=3),delay,-4.84,-6.43,-3.33,True
+default,Periodic matched,recs,0.1,-1.62,1.86,False
+default,Periodic matched,false_recs,-33.6,-34.8,-32.48,True
+default,Periodic matched,sustained_gap,-1.87,-1.94,-1.79,True
+default,Periodic matched,raw_gap,-1.79,-1.86,-1.72,True
+default,Periodic matched,delay,-31.95,-33.38,-30.52,True
+default,Event raw,recs,-143.56,-146.48,-140.76,True
+default,Event raw,false_recs,-60.1,-61.8,-58.5,True
+default,Event raw,sustained_gap,0.53,0.5,0.56,True
+default,Event raw,raw_gap,0.8,0.77,0.83,True
+default,Event raw,delay,19.88,18.8,21.05,True
+default,Event MA,recs,-57.72,-60.14,-55.3,True
+default,Event MA,false_recs,-29.7,-31.14,-28.32,True
+default,Event MA,sustained_gap,0.15,0.12,0.17,True
+default,Event MA,raw_gap,0.2,0.17,0.22,True
+default,Event MA,delay,4.81,3.82,5.79,True
+default,Persistence + MA (w=3),recs,-7.22,-8.94,-5.5,True
+default,Persistence + MA (w=3),false_recs,-14.3,-15.44,-13.24,True
+default,Persistence + MA (w=3),sustained_gap,-0.37,-0.4,-0.35,True
+default,Persistence + MA (w=3),raw_gap,-0.34,-0.36,-0.31,True
+default,Persistence + MA (w=3),delay,-4.8,-5.82,-3.8,True
+spiky,Periodic matched,recs,-1.44,-3.68,0.84,False
+spiky,Periodic matched,false_recs,-23.84,-25.64,-22.04,True
+spiky,Periodic matched,sustained_gap,-0.73,-0.81,-0.66,True
+spiky,Periodic matched,raw_gap,-0.64,-0.69,-0.59,True
+spiky,Periodic matched,delay,-15.84,-17.05,-14.66,True
+spiky,Event raw,recs,-412.94,-417.78,-408.22,True
+spiky,Event raw,false_recs,-212.54,-215.08,-210.1,True
+spiky,Event raw,sustained_gap,-0.03,-0.09,0.02,False
+spiky,Event raw,raw_gap,2.62,2.58,2.65,True
+spiky,Event raw,delay,22.47,21.27,23.59,True
+spiky,Event MA,recs,-131.64,-135.38,-128.0,True
+spiky,Event MA,false_recs,-73.12,-75.72,-70.72,True
+spiky,Event MA,sustained_gap,0.15,0.09,0.2,True
+spiky,Event MA,raw_gap,0.62,0.58,0.65,True
+spiky,Event MA,delay,5.19,4.15,6.23,True
+spiky,Persistence + MA (w=3),recs,7.78,5.02,10.56,True
+spiky,Persistence + MA (w=3),false_recs,-11.62,-13.5,-9.64,True
+spiky,Persistence + MA (w=3),sustained_gap,-0.23,-0.29,-0.17,True
+spiky,Persistence + MA (w=3),raw_gap,-0.07,-0.11,-0.04,True
+spiky,Persistence + MA (w=3),delay,-6.04,-7.21,-4.89,True
